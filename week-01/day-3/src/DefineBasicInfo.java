@@ -12,6 +12,7 @@ public class DefineBasicInfo {
         System.out.println("Height: " + height);
         // Whether you are married or not as a boolean
         boolean married = false;
-        System.out.println("Married: " +married);
+        System.out.println("Married: " + married);
+        System.out.println("Your name is " + name + ", you are " + age + " years old, " + height + " meter tall and that you are married is a " + married + " statement.");
     }
 }

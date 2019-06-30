@@ -8,7 +8,7 @@ public class AnimalAndLegs {
         Scanner scanner = new Scanner(System.in);
         System.out.println("How many chickens the farmer has?");
         int userInput = scanner.nextInt();
-        System.out.println("How many pigs has the farmer?");
+        System.out.println("How many pigs the farmer has?");
         int userInput2 = scanner.nextInt();
         System.out.println("All animal legs on the farm: " + ((userInput * 2 ) + (userInput2 * 4 ) ));
 
