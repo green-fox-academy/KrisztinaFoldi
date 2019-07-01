@@ -2,12 +2,13 @@ public class AppendAFunc {
     public static void main(String[] args) {
         String typo = "Chinchill";
         System.out.println(appendAFunc(typo));
+        System.out.println(appendAFunc("alm"));
 
     }
 
-    public static String appendAFunc (String typo) {
-        typo += "a";
-        return typo;
+    public static String appendAFunc (String word) {
+        word += "a";
+        return word;
 
     }
 }
