@@ -2,6 +2,7 @@ import javax.swing.*;
 
 import java.awt.*;
 
+import static java.awt.Window.getOwnerlessWindows;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class Triangles {
@@ -12,11 +13,11 @@ public class Triangles {
     }
 
     public static void triangle ( Graphics graphics) {
-        for (int i = 0; i < 32; i++) {
-            graphics.drawLine(160-5*i, 0+10*i, 320-10*i, 320);
-            graphics.drawLine(160+5*i, 0+10*i,0+10*i, 320);
-            graphics.drawLine(160-5*i, 0+10*i, 160+5*i, 0+10*i);
-
+        int number = 34;
+        for (int i = 0; i <= number; i++) {
+            graphics.drawLine(WIDTH/2-5*i, 0+10*i, (WIDTH/2+(10*number/2)-10*i), 0+(10*number));
+            graphics.drawLine(WIDTH/2+5*i, 0+10*i,(WIDTH/2-(10*number/2)+10*i), 0+(10*number));
+            graphics.drawLine(WIDTH/2-5*i, 0+10*i, WIDTH/2+5*i, 0+10*i);
         }
     }
 
