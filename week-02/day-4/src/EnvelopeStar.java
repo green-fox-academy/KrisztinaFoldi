@@ -12,22 +12,16 @@ public class EnvelopeStar {
         int x2 = 160;
         int y2 = 160;
 
-//        for (int i = 0; i < 16; i++) {
-//            starDraw(graphics, x1, y1+10*i, x2+10*1, y2);
-//        }
-        starDraw(graphics, x1, y1, x2,y2);
-
-
-//            for (int i = 0; i < 16; i++) {
-//                starDraw(graphics, x1, y1+10*i, (x2 - 10 * i), y2);
-//                starDraw(graphics, x1, y1+10*i, (x2 + 10 * i), y2);
-//            }
+        drawStar(graphics, x1, y1, x2, y2);
 
 
     }
-    public static void starDraw (Graphics graphics, int x1, int y1, int x2, int y2) {
-        for (int i = 0; i < 16; i++) {
+    public static void drawStar (Graphics graphics, int x1, int y1, int x2, int y2) {
+        for (int i = 0; i < 17; i++) {
             graphics.drawLine(x1, y1+10*i, x2+10*i, y2);
+            graphics.drawLine(x1, y1+10*i, x2-10*i, y2);
+            graphics.drawLine(0+10*i, y2, x1, y2+10*i);
+            graphics.drawLine((x1*2)-10*i, y2, x1, y2+10*i);
         }
     }
 
