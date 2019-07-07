@@ -9,18 +9,19 @@ public class SuperHexagon {
     public static void mainDraw(Graphics graphics) {
         int x1StartingPoint = 155;
         int y1StartingPoint = 0;
-        int number = 5;
-        for (int k = 1; k <= number ; k++) {
-            for (int i = 0; i < number; i++) {
-                singleHexagon(graphics, x1StartingPoint, y1StartingPoint+20*i);
-                for (int j = 0; j < number - 1; j++) {
-                    singleHexagon(graphics, x1StartingPoint+15, (y1StartingPoint+10)+20*j);
-                    singleHexagon(graphics, x1StartingPoint-15, (y1StartingPoint+10)+20*j);
-                }
-
-            }
-
+        int number = 3;
+        for (int k = 0; k < number-3 ; k++) {
+            singleHexagon(graphics, x1StartingPoint-30, (y1StartingPoint+20)+20*k);
+            singleHexagon(graphics, x1StartingPoint+30, (y1StartingPoint+20)+20*k);
         }
+        for (int j = 0; j < number-1; j++) {
+            singleHexagon(graphics, x1StartingPoint+15, (y1StartingPoint+10)+20*j);
+            singleHexagon(graphics, x1StartingPoint-15, (y1StartingPoint+10)+20*j);
+        }
+        for (int i = 0; i < number; i++) {
+            singleHexagon(graphics, x1StartingPoint, y1StartingPoint+20*i);
+        }
+
 
 
 
