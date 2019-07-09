@@ -8,17 +8,26 @@ import java.util.List;
 
 public class WriteMultipleLines {
   public static void main (String[] args) {
+    writeMultipleLines("src/index.txt", "cica", 8);
+
+  }
+  public static void writeMultipleLines(String path, String word, int number) {
+    List<String> wordsInTheFile = createList(word, number);
+    writeToFile(path, wordsInTheFile);
+  }
+
+  public static List<String> createList (String word, int number) {
     List<String> wordsInTheFile = new ArrayList<>();
-    int numberOfLines = 7;
-    for (int i = 0; i < numberOfLines; i++) {
-      wordsInTheFile.add("alma");
+    for (int i = 0; i < number; i++) {
+      wordsInTheFile.add(word);
     }
+    return wordsInTheFile;
+  }
+
+  public static void writeToFile (String path, List<String> wordsInTheFile) {
     try {
-      Path filePath = Paths.get("src/index.txt");
+      Path filePath = Paths.get(path);
       Files.write(filePath, wordsInTheFile);
-      for (int i = 0; i < wordsInTheFile.size(); i++) {
-        System.out.println(wordsInTheFile.get(i));
-      }
     } catch (IOException e) {
     }
     }
