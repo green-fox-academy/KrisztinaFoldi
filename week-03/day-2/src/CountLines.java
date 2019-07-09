@@ -10,7 +10,7 @@ public class CountLines {
     Scanner scanner = new Scanner(System.in);
     String fileName = scanner.next();
     try {
-      Path filePath = Paths.get("fileName");
+      Path filePath = Paths.get(fileName);
       List<String> lines = Files.readAllLines(filePath);
       System.out.println(lines.size());
     } catch (IOException e) {
