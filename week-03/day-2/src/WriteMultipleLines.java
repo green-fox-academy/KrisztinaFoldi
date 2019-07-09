@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -18,7 +19,7 @@ public class WriteMultipleLines {
       for (int i = 0; i < wordsInTheFile.size(); i++) {
         System.out.println(wordsInTheFile.get(i));
       }
-    } catch (Exception e) {
+    } catch (IOException e) {
     }
     }
   }
