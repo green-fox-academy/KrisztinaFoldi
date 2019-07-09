@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.nio.file.StandardCopyOption;
 
 public class CopyFile {
@@ -13,7 +14,8 @@ public class CopyFile {
     try {
     Path indexFilePath = Paths.get("src/", fileName1);
     Path index2FilePath = Paths.get("src/", fileName2);
-    Files.copy(indexFilePath, index2FilePath, StandardCopyOption.REPLACE_EXISTING);
+    List<String> lines = Files.readAllLines(indexFilePath);
+    Files.write(index2FilePath, lines);
     }catch (IOException e) {
     }
     }
