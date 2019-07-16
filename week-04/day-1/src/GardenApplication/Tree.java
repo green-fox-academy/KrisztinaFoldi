@@ -1,19 +1,19 @@
 package GardenApplication;
 
 public class Tree extends Plant{
-  private int thirst;
+  private int waterLevel;
 
-  public Tree(String color, int thirst){
-    super(color, thirst);
+  public Tree(String color, int thirstLevel){
+    super(color, thirstLevel);
   }
 
   public void watering(int number) {
-    this.thirst += number * 0.4;
+    this.waterLevel += number * 0.4;
   }
 
   @Override
   public void isThirsty(){
-    if (getThirst() < 10) {
+    if (waterLevel < 10) {
       System.out.println("The " + getColor() + " Tree needs water.");
     } else {
       System.out.println("The " + getColor() + " Tree doesn't need water.");

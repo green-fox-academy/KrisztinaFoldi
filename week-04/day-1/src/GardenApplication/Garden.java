@@ -19,10 +19,6 @@ public class Garden {
     for (int i = 0; i < garden.size() ; i++) {
       garden.get(i).isThirsty();
     }
-//    yellowFlower.isThirsty();
-//    blueFlower.isThirsty();
-//    purpleTree.isThirsty();
-//    orangeTree.isThirsty();
 
 
 
