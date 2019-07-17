@@ -18,18 +18,19 @@ public class Extension {
       return c;
   }
 
-  public int median(List<Integer> pool) {
+  public float median(List<Integer> pool) {
     Collections.sort(pool);
-    if (pool.size() % 2 == 0) {
-      return pool.get((pool.size() + 1) / 2);
+    if(pool.size() % 2 != 0) {
+      return pool.get((pool.size() - 1) / 2);
+    } else {
+      return (float)(pool.get((pool.size() - 1) / 2) + pool.get(pool.size() / 2)) / 2;
     }
-   return pool.get(pool.size()/2);
   }
 
 
 
   public boolean isVowel(char c) {
-    return Arrays.asList('a', 'u', 'o', 'e', 'i').contains(c);
+    return Arrays.asList('a', 'u', 'o', 'e', 'i').contains(Character.toLowerCase(c));
   }
 
   public String translate(String hungarian) {
