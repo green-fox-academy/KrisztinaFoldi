@@ -6,6 +6,7 @@ public class Aircraft {
   public int baseDamage;
   public int maxAmmo;
   public String type;
+  public int damageDealt;
 
 
   public Aircraft(){
@@ -13,14 +14,17 @@ public class Aircraft {
   }
 
   public int fight() {
-    int damageDealt =  baseDamage * ammunition;
+    damageDealt =  baseDamage * ammunition;
     ammunition = 0;
     return damageDealt;
   }
 
   public int refill(int number) {
-    int remainingAmmo = number - maxAmmo;
-    return remainingAmmo;
+    if ( number >= maxAmmo && ammunition == 0) {
+      ammunition += maxAmmo;
+      number -= maxAmmo;
+    }
+    return number;
   }
 
   public String getType() {
