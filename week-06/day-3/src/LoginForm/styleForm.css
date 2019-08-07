@@ -1,0 +1,78 @@
+body {
+    background-color: lightgrey;
+    text-align: left;
+    font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    color:rgba(46, 49, 49, 1);
+
+}
+p {
+    margin-bottom: 0;
+    padding: 40px;
+    font-size: 30px;
+
+}
+
+span {
+    font-size: 10px;
+    text-transform: capitalize;
+    float: right;
+    margin-right: 30px;
+}
+
+span:hover {
+    color: red;
+}
+form {
+    background-color: white;
+    width: 400px;
+    height: 400px;
+    margin: 100px 450px;
+}
+
+fieldset {
+    border: none;
+    padding: 10px 40px;
+}
+
+legend {
+    font-size: 10px;
+}
+
+input {
+    width: 90%;
+    height: 20px;
+    font-size: 20px;
+}
+
+input[type=password] {
+    background: url(eyeicon.png) no-repeat;
+    background-position: right;
+}
+
+input:focus {
+    outline-color: green;
+}
+
+#password-label {
+    margin-top: 20px;
+    margin-bottom: 5px;
+
+}
+
+#user-name-label {
+    margin-bottom: 5px;
+}
+
+
+
+button {
+    background-color: rgba(46, 49, 49, 1);
+    border-radius: 20px;
+    margin-left: 40px;
+    color: white;
+    width: 90px;
+    height: 40px;
+    text-align: center;
+    font-size: 15px;
+}
