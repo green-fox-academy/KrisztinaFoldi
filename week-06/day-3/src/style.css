@@ -1,0 +1,37 @@
+table {
+    width: 400px;
+    border-radius: 20px;
+}
+
+body {
+    background-color: cornflowerblue;
+}
+
+th {
+    background-color: black;
+    color: ghostwhite;
+    border-bottom: 50px solid darkgray;
+}
+
+th, table, td {
+    border: darkgray solid 1px;
+    border-collapse: collapse;
+    padding: 20px;
+    text-align: left;
+    font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+}
+
+tr:nth-child(even) {
+    background-color: lightgrey;
+}
+
+tr:nth-child(odd) {
+    background-color: ghostwhite;
+}
+
+td {
+    color: dimgrey;
+}
+
+
+
