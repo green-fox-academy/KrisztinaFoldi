@@ -18,6 +18,13 @@ th {
     margin: 10px 2px;
     padding: 30px;
 }
+
+td {
+    font-size: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
 button {
     background-color: #f1453d;
     color: white;
@@ -31,10 +38,23 @@ button {
 fieldset {
     border: none;
 }
+
+legend {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    color: #f1453d;
+}
+
 input {
     width: 70%;
+    height: 30px;
+    font-size: 20px;
 }
 
 input:focus {
     outline-color: #f1453d;
+}
+
+#search-button {
+    margin-top: 0;
 }
