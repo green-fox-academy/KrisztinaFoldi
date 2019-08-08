@@ -9,6 +9,10 @@ h1 {
     text-transform: capitalize;
 }
 
+form {
+    margin: 10px 0;
+}
+
 table {
      width: 100%;
 }
@@ -25,6 +29,7 @@ td {
     text-align: center;
 }
 
+a ,
 button {
     background-color: #f1453d;
     color: white;
@@ -32,16 +37,16 @@ button {
     border-radius: 10px;
     padding: 10px;
     font-size: 15px;
-    margin: 10px 10px;
+    margin: 20px;
+    text-decoration: none;
 }
 
 fieldset {
     border: none;
 }
 
-legend {
-    margin-bottom: 0;
-    padding-bottom: 0;
+label {
+    margin-top: 20px;
     color: #f1453d;
 }
 

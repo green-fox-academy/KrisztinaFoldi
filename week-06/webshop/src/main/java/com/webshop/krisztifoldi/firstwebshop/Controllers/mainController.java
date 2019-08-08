@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,7 +47,27 @@ public class mainController {
     return "webshop";
   }
 
+  @GetMapping("/cheapest-first")
+  public String orderedPage(Model model){
+    items.clear();
+    fillTheListWithItems();
+    List<ShopItem> orderedItems = items
+            .stream().sorted(Comparator.comparingInt(x -> x.getPrice()))
+            .collect(Collectors.toList());
+    model.addAttribute("items" , orderedItems);
+    return "webshop";
+  }
 
+  @GetMapping("/contains-nike")
+  public String containsNikePage(Model model) {
+    items.clear();
+    fillTheListWithItems();
+    List<ShopItem> nikeItems = items
+            .stream().filter(x -> x.getName().contains("Nike") || x.getDescription().contains("Nike"))
+            .collect(Collectors.toList());
+    model.addAttribute("items", nikeItems);
+    return "webshop";
+  }
 
 
 
