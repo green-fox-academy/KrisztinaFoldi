@@ -76,10 +76,24 @@ public class mainController {
             .stream().mapToDouble(x -> x.getQuantityOfStock())
             .average()
             .getAsDouble();
-    model.addAttribute("average", averageStock);
+    model.addAttribute("average", "Average stock: " + averageStock);
     return "averageStock";
   }
 
+  @GetMapping("/most-expensive")
+  public String mostExpensivePage(Model model) {
+    items.clear();
+    fillTheListWithItems();
+    int max = items.stream()
+            .mapToInt(x -> x.getPrice())
+            .max()
+            .getAsInt();
+    String nameOfTheMax = items.stream()
+            .filter(x -> x.getPrice() == max)
+            .collect(Collectors.toList()).get(0).getName();
+    model.addAttribute("average", "The most expensive available: " + nameOfTheMax);
+    return "averageStock";
+  }
 
 
 }
