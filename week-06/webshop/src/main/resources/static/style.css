@@ -9,6 +9,9 @@ h1 {
     text-transform: capitalize;
 }
 
+nav {
+    margin-inline-start: 0;
+}
 form {
     margin: 10px 0;
 }

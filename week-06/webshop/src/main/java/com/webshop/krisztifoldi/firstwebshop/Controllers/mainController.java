@@ -3,7 +3,6 @@ import com.webshop.krisztifoldi.firstwebshop.ShopItem;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -19,7 +18,7 @@ public class mainController {
     ShopItem runningShoes = new ShopItem("Running shoes", "Nike running shoes for every day sport", 100, 5);
     ShopItem printer = new ShopItem("Printer", "Some HP printer that will print pages", 300, 2);
     ShopItem cocaCola = new ShopItem("Coca Cola", "0,5l standard coke", 3, 0);
-    ShopItem tShirt = new ShopItem("T-Shirt", "Blue with a corgie on a bike", 20, 1);
+    ShopItem tShirt = new ShopItem("T-Shirt", "Blue with a corgi on a bike", 20, 1);
     items.add(runningShoes);
     items.add(printer);
     items.add(cocaCola);
@@ -67,6 +66,18 @@ public class mainController {
             .collect(Collectors.toList());
     model.addAttribute("items", nikeItems);
     return "webshop";
+  }
+
+  @GetMapping("/average-stock")
+  public String averageStockPage(Model model){
+    items.clear();
+    fillTheListWithItems();
+    double averageStock = items
+            .stream().mapToDouble(x -> x.getQuantityOfStock())
+            .average()
+            .getAsDouble();
+    model.addAttribute("average", averageStock);
+    return "averageStock";
   }
 
 
