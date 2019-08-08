@@ -1,0 +1,40 @@
+body {
+    font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    color: #69effe;
+    border-bottom: #69effe 2px solid;
+    font-size: 50px;
+    text-transform: capitalize;
+}
+
+table {
+     width: 100%;
+}
+
+th {
+    background-color: #69effe;
+    margin: 10px 2px;
+    padding: 30px;
+}
+button {
+    background-color: #f1453d;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 15px;
+    margin: 10px 10px;
+}
+
+fieldset {
+    border: none;
+}
+input {
+    width: 70%;
+}
+
+input:focus {
+    outline-color: #f1453d;
+}

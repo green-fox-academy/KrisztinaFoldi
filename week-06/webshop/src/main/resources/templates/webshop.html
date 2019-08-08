@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>My shop</title>
+</head>
+<body>
+    <h1>My shop</h1>
+    <nav>
+        <button>Only available</button>
+        <button>Cheapest first</button>
+        <button>Contains Nike</button>
+        <button>Average stock</button>
+        <button>Most expensive available</button>
+    </nav>
+    <form>
+        <fieldset>
+            <legend>Search for: </legend>
+            <input type="text" placeholder="...something like Nike" />
+            <button id="search-button">Search </button>
+        </fieldset>
+    </form>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity of stock</th>
+        </tr>
+        <tr>
+            <td th:text = ${name} />
+            <td th:text= ${description} />
+        </tr>
+
+    </table>
+
+</body>
+</html>
