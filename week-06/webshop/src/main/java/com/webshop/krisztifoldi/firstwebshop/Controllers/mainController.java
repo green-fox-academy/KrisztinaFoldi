@@ -1,5 +1,5 @@
 package com.webshop.krisztifoldi.firstwebshop.Controllers;
-import com.webshop.krisztifoldi.firstwebshop.ShopItem;
+import com.webshop.krisztifoldi.firstwebshop.models.ShopItem;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +16,9 @@ import java.util.stream.Collectors;
 public class mainController {
   List<ShopItem> items = new ArrayList<>();
 
+  public mainController() {
+    fillTheListWithItems();
+  }
 
   public List<ShopItem> fillTheListWithItems() {
     ShopItem runningShoes = new ShopItem("Running shoes", "Clothes and shoes", "Nike running shoes for every day sport", 100, 5);
@@ -32,16 +35,12 @@ public class mainController {
 
   @GetMapping("")
   public String mainPage(Model model){
-    items.clear();
-    fillTheListWithItems();
     model.addAttribute("items" , items);
     return "webshop";
   }
 
   @GetMapping("/only-available")
   public String availablePage(Model model){
-    items.clear();
-    fillTheListWithItems();
     List<ShopItem> availableItems = items
             .stream().filter(x -> x.getQuantityOfStock() > 0)
             .collect(Collectors.toList());
@@ -51,8 +50,6 @@ public class mainController {
 
   @GetMapping("/cheapest-first")
   public String orderedPage(Model model){
-    items.clear();
-    fillTheListWithItems();
     List<ShopItem> orderedItems = items
             .stream().sorted(Comparator.comparingInt(x -> x.getPrice()))
             .collect(Collectors.toList());
@@ -62,8 +59,6 @@ public class mainController {
 
   @GetMapping("/contains-nike")
   public String containsNikePage(Model model) {
-    items.clear();
-    fillTheListWithItems();
     List<ShopItem> nikeItems = items
             .stream().filter(x -> x.getName().contains("Nike") || x.getDescription().contains("Nike"))
             .collect(Collectors.toList());
@@ -73,8 +68,6 @@ public class mainController {
 
   @GetMapping("/average-stock")
   public String averageStockPage(Model model){
-    items.clear();
-    fillTheListWithItems();
     double averageStock = items
             .stream().mapToDouble(x -> x.getQuantityOfStock())
             .average()
@@ -85,8 +78,6 @@ public class mainController {
 
   @GetMapping("/most-expensive")
   public String mostExpensivePage(Model model) {
-    items.clear();
-    fillTheListWithItems();
     int max = items.stream()
             .mapToInt(x -> x.getPrice())
             .max()
@@ -99,11 +90,10 @@ public class mainController {
   }
 
   @PostMapping("/search")
-  public String sendForm(@RequestParam("search") String searchedWord, Model model) {
-    items.clear();
-    fillTheListWithItems();
+  public String search(@RequestParam("search") String searchedWord, Model model) {
     List<ShopItem> searchedItems = items.stream()
-            .filter(x -> x.getName().toLowerCase().contains(searchedWord.toLowerCase()) || x.getDescription().toLowerCase().contains(searchedWord.toLowerCase()))
+            .filter(x -> x.getName().toLowerCase().contains(searchedWord.toLowerCase()) ||
+                         x.getDescription().toLowerCase().contains(searchedWord.toLowerCase()))
             .collect(Collectors.toList());
     model.addAttribute("items", searchedItems);
     return "webshop";
@@ -111,24 +101,18 @@ public class mainController {
 
   @GetMapping("/webshop")
   public String getToHomePage(Model model) {
-    items.clear();
-    fillTheListWithItems();
     model.addAttribute("items" , items);
     return "webshop";
   }
 
   @GetMapping("/more-filters")
   public String getToMoreFilteredPage(Model model) {
-    items.clear();
-    fillTheListWithItems();
     model.addAttribute("items", items);
     return "moreFilters";
   }
 
   @RequestMapping("/filter-by-type")
-  public String filterByTypePage(@RequestParam("filter") String type, Model model) {
-    items.clear();
-    fillTheListWithItems();
+  public String filterByTypePage(@RequestParam("filter") String type, @RequestParam("asf") String asf, Model model) {
     List<ShopItem> filteredList = items.stream()
             .filter(x -> x.getType().equals(type))
             .collect(Collectors.toList());

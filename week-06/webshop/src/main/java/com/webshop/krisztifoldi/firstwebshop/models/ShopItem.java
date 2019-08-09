@@ -1,4 +1,4 @@
-package com.webshop.krisztifoldi.firstwebshop;
+package com.webshop.krisztifoldi.firstwebshop.models;
 
 public class ShopItem {
   private String name;
