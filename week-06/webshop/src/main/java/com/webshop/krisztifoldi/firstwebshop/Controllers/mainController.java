@@ -4,8 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -122,6 +122,17 @@ public class mainController {
     items.clear();
     fillTheListWithItems();
     model.addAttribute("items", items);
+    return "moreFilters";
+  }
+
+  @RequestMapping("/filter-by-type")
+  public String filterByTypePage(@RequestParam("filter") String type, Model model) {
+    items.clear();
+    fillTheListWithItems();
+    List<ShopItem> filteredList = items.stream()
+            .filter(x -> x.getType().equals(type))
+            .collect(Collectors.toList());
+    model.addAttribute("items", filteredList);
     return "moreFilters";
   }
 
