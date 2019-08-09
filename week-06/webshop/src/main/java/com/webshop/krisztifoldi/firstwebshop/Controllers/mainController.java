@@ -18,10 +18,10 @@ public class mainController {
 
 
   public List<ShopItem> fillTheListWithItems() {
-    ShopItem runningShoes = new ShopItem("Running shoes", "Nike running shoes for every day sport", 100, 5);
-    ShopItem printer = new ShopItem("Printer", "Some HP printer that will print pages", 300, 2);
-    ShopItem cocaCola = new ShopItem("Coca Cola", "0,5l standard coke", 3, 0);
-    ShopItem tShirt = new ShopItem("T-Shirt", "Blue with a corgi on a bike", 20, 1);
+    ShopItem runningShoes = new ShopItem("Running shoes", "Clothes and shoes", "Nike running shoes for every day sport", 100, 5);
+    ShopItem printer = new ShopItem("Printer", "Electronics","Some HP printer that will print pages", 300, 2);
+    ShopItem cocaCola = new ShopItem("Coca Cola", "Beverages", "0,5l standard coke", 3, 0);
+    ShopItem tShirt = new ShopItem("T-Shirt", "Clothes and shoes" ,"Blue with a corgi on a bike", 20, 1);
     items.add(runningShoes);
     items.add(printer);
     items.add(cocaCola);
@@ -103,10 +103,26 @@ public class mainController {
     items.clear();
     fillTheListWithItems();
     List<ShopItem> searchedItems = items.stream()
-            .filter(x -> x.getName().toLowerCase().contains(searchedWord) || x.getDescription().toLowerCase().contains(searchedWord))
+            .filter(x -> x.getName().toLowerCase().contains(searchedWord.toLowerCase()) || x.getDescription().toLowerCase().contains(searchedWord.toLowerCase()))
             .collect(Collectors.toList());
     model.addAttribute("items", searchedItems);
     return "webshop";
+  }
+
+  @GetMapping("/webshop")
+  public String getToHomePage(Model model) {
+    items.clear();
+    fillTheListWithItems();
+    model.addAttribute("items" , items);
+    return "webshop";
+  }
+
+  @GetMapping("/more-filters")
+  public String getToMoreFilteredPage(Model model) {
+    items.clear();
+    fillTheListWithItems();
+    model.addAttribute("items", items);
+    return "moreFilters";
   }
 
 

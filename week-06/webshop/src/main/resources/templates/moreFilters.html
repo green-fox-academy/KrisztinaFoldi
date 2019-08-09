@@ -8,43 +8,43 @@
 <body>
     <header>
         <a href="/webshop">
-            <span>My shop</span>
+            <span> My shop </span>
         </a>
         <a href="/more-filters">
             <span id="more-link">More>></span>
         </a>
     </header>
+
     <nav>
-        <a href="/only-available">Only available</a>
-        <a href="/cheapest-first">Cheapest first</a>
-        <a href="/contains-nike">Contains Nike</a>
-        <a href="/average-stock">Average stock</a>
-        <a href="/most-expensive">Most expensive available</a>
+      <a href="/only-available"></a>
+     <a href="/cheapest-first"></a>
+     <a href="/contains-nike"></a>
+     <a href="/average-stock"></a>
+     <a href="/most-expensive"></a>
     </nav>
     <form th:action="search" method="post">
-        <fieldset>
-            <label>Search for: </label>
-            <br>
-            <input type="text" name="search" placeholder="...something like Nike" />
-            <input type="submit" value="Search" id="search-button" />
-        </fieldset>
+     <fieldset>
+        <label>Search for: </label>
+        <br>
+        <input type="text" name="search" placeholder="...something like Nike" />
+        <input type="submit" value="Search" id="search-button" />
+     </fieldset>
     </form>
     <table>
-        <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Quantity of stock</th>
-        </tr>
+       <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity of stock</th>
+       </tr>
         <tr th:each="item : ${items}">
             <td th:text="${item.getName()}"></td>
             <td th:text="${item.getType()}"></td>
             <td th:text="${item.getDescription()}"></td>
             <td th:text="${item.getPrice()} + '$'"  ></td>
             <td th:text="${item.getQuantityOfStock()}"></td>
-        </tr>
+         </tr>
     </table>
-
 </body>
 </html>
