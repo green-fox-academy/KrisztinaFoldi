@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="/style.css" />
@@ -14,12 +14,12 @@
         <a href="/average-stock">Average stock</a>
         <a href="/most-expensive">Most expensive available</a>
     </nav>
-    <form>
+    <form th:action="search" method="post">
         <fieldset>
             <label>Search for: </label>
             <br>
-            <input type="text" placeholder="...something like Nike" />
-            <button id="search-button">Search </button>
+            <input type="text" name="search" placeholder="...something like Nike" />
+            <input type="submit" value="Search" id="search-button" />
         </fieldset>
     </form>
     <table>

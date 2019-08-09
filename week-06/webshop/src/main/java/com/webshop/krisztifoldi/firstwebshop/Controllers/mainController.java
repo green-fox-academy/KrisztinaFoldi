@@ -3,6 +3,9 @@ import com.webshop.krisztifoldi.firstwebshop.ShopItem;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -93,6 +96,17 @@ public class mainController {
             .collect(Collectors.toList()).get(0).getName();
     model.addAttribute("average", "The most expensive available: " + nameOfTheMax);
     return "averageStock";
+  }
+
+  @PostMapping("/search")
+  public String sendForm(@RequestParam("search") String searchedWord, Model model) {
+    items.clear();
+    fillTheListWithItems();
+    List<ShopItem> searchedItems = items.stream()
+            .filter(x -> x.getName().toLowerCase().contains(searchedWord) || x.getDescription().toLowerCase().contains(searchedWord))
+            .collect(Collectors.toList());
+    model.addAttribute("items", searchedItems);
+    return "webshop";
   }
 
 
