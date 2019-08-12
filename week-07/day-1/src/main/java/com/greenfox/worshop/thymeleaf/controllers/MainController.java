@@ -28,4 +28,9 @@ public class MainController {
     return "index";
   }
 
+  @RequestMapping("/enjoy")
+  public String showUText() {
+   return "htmlception";
+  }
+
 }
