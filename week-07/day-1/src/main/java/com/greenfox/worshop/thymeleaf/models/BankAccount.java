@@ -1,5 +1,7 @@
 package com.greenfox.worshop.thymeleaf.models;
 
+import java.text.DecimalFormat;
+
 public class BankAccount {
   String name;
   int balance;
