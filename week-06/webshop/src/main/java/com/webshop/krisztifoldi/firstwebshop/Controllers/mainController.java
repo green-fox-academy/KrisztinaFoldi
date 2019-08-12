@@ -112,7 +112,7 @@ public class mainController {
   }
 
   @RequestMapping("/filter-by-type")
-  public String filterByTypePage(@RequestParam("filter") String type, @RequestParam("asf") String asf, Model model) {
+  public String filterByTypePage(@RequestParam("filter") String type, Model model) {
     List<ShopItem> filteredList = items.stream()
             .filter(x -> x.getType().equals(type))
             .collect(Collectors.toList());
