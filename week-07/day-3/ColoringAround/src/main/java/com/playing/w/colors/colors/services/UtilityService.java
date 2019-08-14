@@ -22,11 +22,11 @@ public class UtilityService {
     return colors.get(random.nextInt(colors.size()));
   }
 
-  public String validateEmail(String email) {
+  public boolean validateEmail(String email) {
     if (email.contains("@") && email.contains(".")) {
-      return email + "is a valid email address";
+      return true;
     } else {
-      return email + "is not a valid email address";
+      return false;
     }
   }
 }

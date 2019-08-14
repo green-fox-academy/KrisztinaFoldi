@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
     <a href="http://localhost:8080/useful/colored-background">Colored background</a>
+    <form th:action="email" method="post">
+        <input type="text" name="emailaddress" />
+        <input type="submit" value="Is it valid?"/>
+    </form>
     <a href="http://localhost:8080/useful/email-validator">Email validator</a>
     <a href="http://localhost:8080/useful/caesar-encoder">Caesar encoder</a>
 </body>

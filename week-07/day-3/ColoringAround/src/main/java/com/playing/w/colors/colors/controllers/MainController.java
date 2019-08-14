@@ -27,9 +27,15 @@ public class MainController {
     return "colored";
   }
 
-  @RequestMapping("useful/email-validator")
-  public String email(@RequestParam("emailToCheck") String emailToCheck, Model model) {
-    model.addAttribute("email", utilityService.validateEmail(emailToCheck));
+  @RequestMapping("/email")
+  public String email(@RequestParam("emailaddress") String emailToCheck, Model model) {
+    if( utilityService.validateEmail(emailToCheck)) {
+      model.addAttribute("valid", "true");
+      model.addAttribute("email", emailToCheck);
+    } else {
+      model.addAttribute("valid", false);
+      model.addAttribute("email", emailToCheck );
+    }
     return "email";
   }
 }
