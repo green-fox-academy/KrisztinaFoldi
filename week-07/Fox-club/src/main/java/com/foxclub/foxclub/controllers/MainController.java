@@ -23,7 +23,7 @@ public class MainController {
   }
 
   @RequestMapping("/")
-  public String goHome(@RequestParam(value = "name", required = false) String name, Model model) {
+  public String goLogin(@RequestParam(value = "name", required = false) String name, Model model) {
     if(name == null || name.equals("")) {
       return "redirect:/login";
     } else {
@@ -31,6 +31,11 @@ public class MainController {
     }
     return "index";
   }
+
+//  @RequestMapping("/")
+//  public String goToInfoPage() {
+//    return "index";
+//  }
 
 
   @GetMapping("/login")
@@ -41,5 +46,10 @@ public class MainController {
   @PostMapping(value="/login")
   public String foxPage(@RequestParam("username") String userName) {
     return "redirect:/?name=" + userName;
+  }
+
+  @RequestMapping("/nutritionStore")
+  public String nutritionStore() {
+    return "nutrition";
   }
 }
