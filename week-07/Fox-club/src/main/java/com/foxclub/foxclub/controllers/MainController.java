@@ -1,17 +1,33 @@
 package com.foxclub.foxclub.controllers;
+import com.foxclub.foxclub.model.FindFox;
+import com.foxclub.foxclub.model.Fox;
+import com.foxclub.foxclub.model.Foxes;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class MainController {
+  Foxes foxes;
+  FindFox fox;
+
+
+  @Autowired
+  public MainController(Foxes foxes, FindFox fox) {
+    this.foxes = foxes;
+    this.fox = fox;
+  }
 
   @RequestMapping("/")
   public String goHome(@RequestParam(value = "name", required = false) String name, Model model) {
     if(name == null || name.equals("")) {
-      model.addAttribute("name", "Mr.Fox");
+      return "redirect:/login";
     } else {
-      model.addAttribute("name", name);
+      model.addAttribute("fox", fox.foxFinder(foxes, name));
     }
     return "index";
   }
