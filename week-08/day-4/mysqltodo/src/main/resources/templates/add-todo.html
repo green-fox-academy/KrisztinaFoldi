@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add ToDo!</title>
+</head>
+<body>
+    <h1>Add new ToDo: </h1>
+    <div>
+    <form method="post" action="/addTodo" th:object="${todo}">
+        <input type="text" name="add" th:field="*{title}" />
+        <input type="submit" name="add-button" value="Submit"/>
+    </form>
+    </div>
+</body>
+</html>

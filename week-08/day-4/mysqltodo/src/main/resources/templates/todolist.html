@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta charset="UTF-8"  />
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <title>Todo list</title>
 </head>
 <body>
-$END$
+<h1>Todos for next week: </h1>
+
+<a href="/todo/addTodo">Add more Todo!</a>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Action</th>
+        <th>Done</th>
+        <th>Urgent</th>
+    </tr>
+    <tr th:each="todo : ${todos}">
+        <td th:text="${todo.id}"></td>
+        <td th:text="${todo.title}"></td>
+        <td th:text="${todo.done}"></td>
+        <td th:text="${todo.urgent}"></td>
+    </tr>
+</table>
+
 </body>
 </html>
