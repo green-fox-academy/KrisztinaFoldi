@@ -1,14 +1,10 @@
 package com.example.restapidemo.controllers;
 
-import com.example.restapidemo.models.HibaUzi;
-import com.example.restapidemo.models.Received;
-import com.example.restapidemo.models.Welcome;
-import com.example.restapidemo.models.Word;
+import com.example.restapidemo.models.*;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.lang.Number;
 
 @RestController
 public class MyController {
@@ -41,5 +37,24 @@ public class MyController {
     return ResponseEntity.status(200).body(new Word(appendable));
   }
 
-
+  @PostMapping("dountil/{action}")
+  private ResponseEntity dountil(@PathVariable("action") String action,
+                                 @RequestBody DoUntil doUntil) {
+    if (action.equals("sum")) {
+      Integer result = 0;
+      for (int i = 0; i <= doUntil.getUntil(); i++) {
+        result += i;
+      }
+      doUntil.setResult(result);
+      return ResponseEntity.status(200).body(new DoUntil(doUntil.getUntil(), result));
+    } else if (action.equals("factor")) {
+      Integer factorialResult = 1;
+      for (int i = 1; i <= doUntil.getUntil(); i++) {
+        factorialResult = factorialResult * i;
+      }
+      return ResponseEntity.status(200).body(new DoUntil(doUntil.getUntil(), factorialResult));
+    } else {
+      return ResponseEntity.status(200).body(new HibaUzi("Please provide a number!"));
+    }
+  }
 }
