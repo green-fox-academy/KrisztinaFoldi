@@ -3,8 +3,10 @@ package com.example.restapidemo.controllers;
 import com.example.restapidemo.models.HibaUzi;
 import com.example.restapidemo.models.Received;
 import com.example.restapidemo.models.Welcome;
+import com.example.restapidemo.models.Word;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MyController {
 
   @GetMapping("/doubling")
-  public ResponseEntity doubling(@RequestParam(value = "input", required = false) Integer input){
+  public ResponseEntity doubling(@RequestParam(value = "input", required = false) Integer input) {
     if (input != null) {
       return ResponseEntity.status(200).body(new Received(input));
     } else {
@@ -33,4 +35,11 @@ public class MyController {
       return ResponseEntity.status(200).body(new HibaUzi("Please provide a title!"));
     }
   }
+
+  @GetMapping("appenda/{appendable}")
+  public ResponseEntity appenda(@PathVariable(value = "appendable") String appendable) {
+    return ResponseEntity.status(200).body(new Word(appendable));
+  }
+
+
 }
