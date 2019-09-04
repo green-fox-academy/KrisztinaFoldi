@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Assignee</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Edit Assignee</h1>
+    <form method="post" th:action="'http://localhost:8080/todo/assignees' + ${id} + '/edit'" th:object="${assignee}">
+        <label for="name">Assignee's name: </label>
+        <input type="text" id="name" name="editedName" >
+        <label for="email">Assignee's email: </label>
+        <input type="email" id="email" name="editedEmail" >
+        <input type="submit" value="Save">
+    </form>
+    <a href="http://localhost:8080/todo/assignees">Cancel</a>
+
+</body>
+</html>

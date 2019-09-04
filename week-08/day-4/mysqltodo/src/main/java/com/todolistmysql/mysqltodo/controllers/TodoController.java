@@ -34,12 +34,6 @@ public class TodoController {
     return "todolist";
   }
 
-//  @GetMapping("/add-todo")
-//  public String renderAddTodo(Model model) {
-//    model.addAttribute("todo", new Todo());
-//    return "add-todo";
-//  }
-
   @GetMapping("/add")
   public String renderAddTodo(Model model) {
     model.addAttribute("todo", new Todo());

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignees</title>
+</head>
+<body>
+    <table>
+        <tr th:each="assignees : ${assignee}">
+            <td th:text="${assignee.name}"></td>
+            <td th:text="${assignee.email}"></td>
+            <td><a th:href="'/todo/' + *{id} + '/edit'">Edit</a></td>
+            <td><a th:href="'/todo/' + *{id} + '/delete'">Delete</a></td>
+        </tr>
+    </table>
+
+    <form method="post" action="http://localhost:8080/todo/assignees" th:object="${assignee}">
+        <label>Add a new Assignee!</label>
+        <input type="text" name="name" th:field="*{name}">
+        <input type="email" name="email" th:field="*{email}">
+        <input type="submit" value="ADD">
+    </form>
+
+</body>
+</html>

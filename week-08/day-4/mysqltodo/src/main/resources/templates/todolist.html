@@ -8,11 +8,16 @@
 <body>
     <h1>Todos for next week: </h1>
 
+    <a href="http://localhost:8080/todo/assignees">List of Assignees</a>
+    <br>
+
     <a href="http://localhost:8080/todo/add">Add more Todo!</a>
+    <br>
 
     <form method="post" action="http://localhost:8080/todo/list">
-      <input type="text" name="search">
-      <input type="submit" value="Search">
+        <label>Find your todos:</label>
+        <input type="text" name="search">
+        <input type="submit" value="Search">
     </form>
 
     <table>
