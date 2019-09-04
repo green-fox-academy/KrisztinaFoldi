@@ -18,7 +18,7 @@ public class TodoController {
     this.todoRepository = todoRepository;
   }
 
-  @RequestMapping(value = "/list")
+  @RequestMapping("/list")
   public String list(Model model) {
     model.addAttribute("todos", todoRepository.findAll());
     return "todolist";
@@ -40,14 +40,36 @@ public class TodoController {
 //    return "add-todo";
 //  }
 
-  @RequestMapping("/addTodo")
-  public String addTodo() {
+  @GetMapping("/add")
+  public String renderAddTodo(Model model) {
+    model.addAttribute("todo", new Todo());
     return "add-todo";
   }
 
-  @PostMapping("/addTodo")
-  public String newTodo(@RequestParam("newTodo") String todoName) {
-    todoRepository.save(new Todo(todoName));
+  @PostMapping("/add")
+  public String addTodo(@ModelAttribute Todo newTodo) {
+    if(newTodo.getTitle() != null && newTodo.getTitle() != "") {
+      todoRepository.save(newTodo);
+    }
     return "redirect:/todo/";
+  }
+
+  @GetMapping("/{id}/delete")
+  public String delete(@PathVariable long id) {
+    todoRepository.deleteById(id);
+    return "redirect:/todo/list";
+  }
+
+  @GetMapping("/{id}/edit")
+  public String renderEditing(@PathVariable("id") long id, Model model) {
+    model.addAttribute("todo", todoRepository.findById(id));
+    model.addAttribute("id", id);
+    return "edittodo";
+  }
+
+  @PostMapping("/{id}/edit")
+  public String editing(@PathVariable("id") long id, @ModelAttribute Todo editedTodo) {
+    todoRepository.save(editedTodo);
+    return "redirect:/todo/list";
   }
 }

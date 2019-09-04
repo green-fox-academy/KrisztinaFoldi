@@ -7,7 +7,7 @@
 <body>
     <h1>Add new ToDo: </h1>
     <div>
-    <form method="post" action="/addTodo" th:object="${todo}">
+    <form method="post" action="http://localhost:8080/todo/add" th:object="${todo}">
         <input type="text" name="add" th:field="*{title}" />
         <input type="submit" name="add-button" value="Submit"/>
     </form>
