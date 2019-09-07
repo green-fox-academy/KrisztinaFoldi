@@ -7,7 +7,13 @@
 <body>
     <a href="/submit">Submit new post</a>
     <h1>Trending posts</h1>
-
-
+<table>
+    <tr th:each="post : ${posts}">
+        <td th:text="${post.numberOfLikes}"></td>
+        <td th:href="'+'"></td>
+        <td th:href="'-'"></td>
+        <td th:text="${post.name}"></td>
+    </tr>
+</table>
 </body>
 </html>

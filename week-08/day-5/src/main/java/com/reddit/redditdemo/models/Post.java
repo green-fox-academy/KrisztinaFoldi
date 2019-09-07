@@ -11,13 +11,19 @@ public class Post {
   private Integer id;
   private String name;
   private int numberOfLikes = 0;
+  private String url;
+
+
+  public Post() {
+  }
+
+  public Post(String name, String url) {
+    this.name = name;
+    this.url = url;
+  }
 
   public Integer getId() {
     return id;
-  }
-
-  public Post(String name) {
-    this.name = name;
   }
 
   public String getName() {
@@ -34,5 +40,13 @@ public class Post {
 
   public void setNumberOfLikes(int numberOfLikes) {
     this.numberOfLikes = numberOfLikes;
+  }
+
+  public String getUrl() {
+    return url;
+  }
+
+  public void setUrl(String url) {
+    this.url = url;
   }
 }
