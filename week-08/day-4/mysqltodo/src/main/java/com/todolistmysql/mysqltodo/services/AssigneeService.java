@@ -10,4 +10,5 @@ public interface AssigneeService {
   Assignee findAssignee(Long id);
   void update(Long id, String name, String email);
   Assignee findById(Long id);
+  void deleteAssignee(Long id);
 }

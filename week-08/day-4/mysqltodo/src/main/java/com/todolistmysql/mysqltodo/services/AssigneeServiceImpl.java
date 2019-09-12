@@ -46,4 +46,10 @@ public class AssigneeServiceImpl implements AssigneeService {
     } else
       return null;
   }
+
+  @Override
+  public void deleteAssignee(Long id) {
+    Assignee assignee = findById(id);
+    assigneeRepo.delete(assignee);
+  }
 }

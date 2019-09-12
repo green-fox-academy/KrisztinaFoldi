@@ -1,6 +1,7 @@
 package com.todolistmysql.mysqltodo.controllers;
 import com.todolistmysql.mysqltodo.models.Todo;
 import com.todolistmysql.mysqltodo.repositories.TodoRepository;
+import com.todolistmysql.mysqltodo.services.AssigneeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +13,12 @@ import org.springframework.web.bind.annotation.*;
 public class TodoController {
 
   TodoRepository todoRepository;
+  AssigneeService assigneeService;
 
   @Autowired
-  public TodoController(TodoRepository todoRepository) {
+  public TodoController(TodoRepository todoRepository, AssigneeService assigneeService) {
     this.todoRepository = todoRepository;
+    this.assigneeService = assigneeService;
   }
 
   @RequestMapping("/list")
@@ -57,12 +60,14 @@ public class TodoController {
   @GetMapping("/{id}/edit")
   public String renderEditing(@PathVariable("id") long id, Model model) {
     model.addAttribute("todo", todoRepository.findById(id));
+    model.addAttribute("assignees", assigneeService.findAll());
     model.addAttribute("id", id);
     return "edittodo";
   }
 
   @PostMapping("/{id}/edit")
   public String editing(@PathVariable("id") long id, @ModelAttribute Todo editedTodo) {
+
     todoRepository.save(editedTodo);
     return "redirect:/todo/list";
   }

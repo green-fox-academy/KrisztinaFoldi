@@ -1,9 +1,6 @@
 package com.todolistmysql.mysqltodo.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Todo {
@@ -14,6 +11,8 @@ public class Todo {
   private String title;
   private boolean urgent;
   private boolean done;
+  @ManyToOne
+  private Assignee todoAssignee;
 
   public Todo() {
   }

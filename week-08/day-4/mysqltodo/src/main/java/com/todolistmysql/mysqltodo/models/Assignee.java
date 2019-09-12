@@ -3,9 +3,8 @@ package com.todolistmysql.mysqltodo.models;
 import jdk.nashorn.internal.objects.annotations.Getter;
 import jdk.nashorn.internal.objects.annotations.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Assignee {
@@ -15,6 +14,8 @@ public class Assignee {
   private Long id;
   private String name;
   private String email;
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "todoAssignee")
+  private List<Todo> todos;
 
   public Assignee() {
   }
