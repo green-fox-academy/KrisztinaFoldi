@@ -1,0 +1,13 @@
+@model Todo
+<div class="form-group">
+<form action="/edit?id=@Model.TodoId&userid=@Model.UserId" method="post">
+    <h2>Edit your todo</h2>
+    <label>Todo name</label>
+    <input type="text" name="name" value="@Model.TodoName"/>
+    <br>
+    <label>Is done</label>
+    <input type="checkbox" name="isDone" value="@Model.isDone" />
+    <br>
+    <button type="submit" class="btn btn-dark">Save changes</button>
+</form>
+</div>

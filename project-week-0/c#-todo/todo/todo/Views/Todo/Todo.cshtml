@@ -1,0 +1,39 @@
+@model User
+
+<h1>Todos for today</h1>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Done</th>
+        <th>Delete</th>
+        <th>Edit</th>
+        
+    </tr>
+    @foreach (var todo in Model.Todos)
+    {
+        <tr>
+            <td>@todo.TodoName</td>
+            <td>@todo.isDone</td>
+            <td>
+                <form action="/delete?id=@todo.TodoId&username=@Model.Username" method="post">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+            <td>
+                <form action="/edittodo?id=@todo.TodoId&username=@Model.Username" method="post">
+                    <button type="submit" class="btn btn-secondary">Edit</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+<div class="form-group">
+<h2>Add more todo!</h2>
+<form action="/add?username=@Model.Username" method="post">
+    <label for="name"></label>
+    <input type="text" name="name"/>
+    <button type="submit" class="btn btn-dark">Add Todo</button>
+</form>
+</div>
+
