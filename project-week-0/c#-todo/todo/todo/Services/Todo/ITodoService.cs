@@ -9,6 +9,7 @@ namespace todo.Services
         List<Todo> findAllTodo(string userName);
         void deleteTodo(long id);
         Todo findTodoById(long id);
-        void editTodo(long id, string name, bool isDone, string username);
+        void editTodo(long id, string name, string isDone);
+        void finishTodo(long id);
     }
 }

@@ -4,5 +4,6 @@ namespace todo.Services.User
     {
         void addUser(string name);
         Models.User findUserByName(string name);
+        Models.User findUserById(long id);
     }
 }

@@ -50,10 +50,33 @@ namespace todo.Services
             return foundTodo;
         }
 
-        public void editTodo(long id, string name, bool isDone, string username)
+        public void editTodo(long id, string name, string isDone)
         {
             var todoToEdit = findTodoById(id);
+            if (isDone == "true")
+            {
+                todoToEdit.isDone = true;
+            }
+            
+            todoToEdit.TodoName = name;
+            
+            _applicationContext.todos.Update(todoToEdit);
             _applicationContext.SaveChanges();
+        }
+
+        public void finishTodo(long id)
+        {
+           var todo = findTodoById(id);
+           if (todo.isDone == true)
+           {
+               todo.isDone = false;
+           }
+           else
+           {
+               todo.isDone = true;
+           }
+           _applicationContext.todos.Update(todo);
+           _applicationContext.SaveChanges();
 
         }
     }

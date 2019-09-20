@@ -41,9 +41,10 @@ namespace todo.Controllers
         }
 
         [HttpPost("/edit")]
-        public IActionResult Edit(long id, string username, string TodoName, bool isDone)
+        public IActionResult Edit(long id,long userId, string todoName, string done)
         {
-            iTodoService.editTodo(id, TodoName, isDone, username);
+            iTodoService.editTodo(id, todoName, done);
+            var username = UserService.findUserById(userId).Username;
             return RedirectToAction(nameof(TodoController.Todo),"Todo", new {username});
         }
 
@@ -51,8 +52,14 @@ namespace todo.Controllers
         public IActionResult EditTodo(long id, string username)
         {
             var todo = iTodoService.findTodoById(id);
-            var userId = UserService.findUserByName(username);
             return View(todo);
+        }
+
+        [HttpPost("/finish")]
+        public IActionResult Finish(long id, string username)
+        {
+            iTodoService.finishTodo(id);
+            return RedirectToAction(nameof(TodoController.Todo),"Todo", new {username});
         }
         
     }

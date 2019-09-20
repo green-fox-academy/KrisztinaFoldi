@@ -5,9 +5,10 @@
 <table class="table">
     <tr>
         <th>Name</th>
+        <th>Is it done?</th>
         <th>Done</th>
-        <th>Delete</th>
         <th>Edit</th>
+        <th>Delete</th>
         
     </tr>
     @foreach (var todo in Model.Todos)
@@ -16,13 +17,18 @@
             <td>@todo.TodoName</td>
             <td>@todo.isDone</td>
             <td>
-                <form action="/delete?id=@todo.TodoId&username=@Model.Username" method="post">
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
+                <form action="/finish?id=@todo.TodoId&username=@Model.Username" method="post">
+                    <button type="submit" class="btn btn-secondary">Done</button>
+                    </form>
             </td>
             <td>
                 <form action="/edittodo?id=@todo.TodoId&username=@Model.Username" method="post">
                     <button type="submit" class="btn btn-secondary">Edit</button>
+                </form>
+            </td>
+            <td>
+                <form action="/delete?id=@todo.TodoId&username=@Model.Username" method="post">
+                    <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </td>
         </tr>

@@ -34,5 +34,11 @@ namespace todo.Services.User
 
             return user;
         }
+
+        public Models.User findUserById(long id)
+        {
+            var user = _context.users.FirstOrDefault(x => x.UserId == id);
+            return user;
+        }
     }
 }
