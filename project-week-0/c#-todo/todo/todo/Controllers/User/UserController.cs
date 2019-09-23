@@ -21,8 +21,14 @@ namespace todo.Controllers.User
         [HttpPost("/login")]
         public IActionResult AddUser(string username)
         {
-            UserService.addUser(username);
-            return RedirectToAction(nameof(TodoController.Todo), "Todo", new {username});
+            if (ModelState.IsValid)
+            {
+                UserService.addUser(username);
+                return RedirectToAction(nameof(TodoController.Todo), "Todo", new {username});
+            }
+
+            return Redirect("/login");
+
         }
     }
 }
